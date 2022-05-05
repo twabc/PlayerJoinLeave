@@ -1,0 +1,30 @@
+#登入訊息
+first_time_join_message: "&f[&e首次加入&f] &6{player} &b歡迎&3~"
+join_message: "&f[&b+&f] &3{player} &a降落到了伺服器 &f(｡･∀･)ﾉﾞ"
+quit_message: "&f[&c-&f] &3{player} &a離開了伺服器"
+message_show_text:
+   - "&e&l玩家名稱&f:&b {player_name}"
+   - "&e&l所在世界&f:&b {player_world}"
+   - ""
+   - "&6&l點擊即可打好發送密語指令"
+message_suggest_command: "/msg {player}"
+
+#在玩家登入時輸入訊息|文字
+player_join_send_message_enabled: true
+player_join_send_message: ""
+
+#title功能
+Title_enabled: true
+Title_message: "&e&k=== &d&l歡&b&l迎&6&l光&9&l臨 &e&k==="
+Sub_Title_message: "&e&l來到伺服器遊玩"
+fadeln: 10
+stay: 30
+fadeOut: 10
+
+#音效
+Sound_enabled: true
+Sound_type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
+
+#重製資料夾指令: /playerjoinleavereload
+reload_command_message: "[&b系統&f] &6成功重製&econfig資料夾"
+reload_command_no_permission: "[&b系統&f] &a你沒有權限使用此指令"

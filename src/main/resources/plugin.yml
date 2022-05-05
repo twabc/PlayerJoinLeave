@@ -1,0 +1,7 @@
+name: PlayerJoinLeave
+version: '${project.version}'
+main: playerjoinleave.playerjoinleave.PlayerJoinLeave
+api-version: 1.18
+authors: [ tw_abc ]
+commands:
+  playerjoinleavereload:
