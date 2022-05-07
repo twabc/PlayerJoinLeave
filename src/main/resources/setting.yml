@@ -1,30 +1,82 @@
-#登入訊息
-first_time_join_message: "&f[&e首次加入&f] &6{player} &b歡迎&3~"
-join_message: "&f[&b+&f] &3{player} &a降落到了伺服器 &f(｡･∀･)ﾉﾞ"
-quit_message: "&f[&c-&f] &3{player} &a離開了伺服器"
+#登入訊息 true -> 開啟  false -> 關閉
+join_message_enabled: true
+
+#將滑鼠移動到訊息上顯示的文字
+#可只用佔位符: {player_name} -> 玩家名稱 {player_world} 玩家所在世界
+# {loc_x} {loc_y} {loc_z} -> 玩家X, Y, Z座標
+# {player_uuid} -> 玩家UUID
 message_show_text:
    - "&e&l玩家名稱&f:&b {player_name}"
    - "&e&l所在世界&f:&b {player_world}"
    - ""
    - "&6&l點擊即可打好發送密語指令"
+#點擊登出登入後預備輸入的訊息
 message_suggest_command: "/msg {player}"
 
-#在玩家登入時輸入訊息|文字
+
+#在玩家登入時輸入指令|文字
 player_join_send_message_enabled: true
 player_join_send_message: ""
 
-#title功能
+
+#title功能 true -> 開啟  false-> 關閉
 Title_enabled: true
-Title_message: "&e&k=== &d&l歡&b&l迎&6&l光&9&l臨 &e&k==="
-Sub_Title_message: "&e&l來到伺服器遊玩"
+#淡入時間 | 停留時間 | 淡出時間
 fadeln: 10
 stay: 30
 fadeOut: 10
 
-#音效
+
+#音效 true -> 開啟  false -> 關閉
 Sound_enabled: true
+#音效類型 切記輸入大寫
+#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html 可在此網站中搜尋音效
 Sound_type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
 
-#重製資料夾指令: /playerjoinleavereload
-reload_command_message: "[&b系統&f] &6成功重製&econfig資料夾"
-reload_command_no_permission: "[&b系統&f] &a你沒有權限使用此指令"
+
+#指令無權限
+command_no_permission: "[&b系統&f] &a你沒有權限使用此指令"
+
+
+#重製資料夾指令: /joinleave reload
+#權限節點: Playerjoinleave.reload
+reload_setting_file: "[&b系統&f] &6&l成功重製&esetting&6&l資料夾"
+reload_message_file: "[&b系統&f] &6&l成功重製&emessage&6&l資料夾"
+no_specify_file:
+   - "[&b系統&f] &6&l請指定要重製的資料夾"
+   - "&f&l/&e&ljoinleave reload &3setting&f&l|&3message"
+
+#指令教學: /joinleave help
+#權限節點: Playerjoinleave.help
+help_command_message:
+   - "&e&l-------------"
+   - "&f&l/&6&ljoinleave info&f: &b&l插件資訊"
+   - "&f&l/&6&ljoinleave list&f: &b&l登出登入訊息查詢"
+   - "&f&l/&6&ljoinleave set &ejoinmessage&f&l|&eleavemessage"
+   - "&efirsttimejoinmessage&f&l|&etitle&f&l|&esubtitle&f&6&l訊息: &b&l設定登出登入訊息"
+   - "&f&l/&6&ljoinleave reload &3&lmessage&f&l|&3setting&f &b&l重製指定資料夾:"
+   - "&e&l-------------"
+
+
+#訊息查詢: /joinleave list
+#權限節點: Playerjoinleave.list
+#佔位符: {command} -> 登出|登入訊息
+info_first_time_join_message: "&e&l玩家首次加入訊息&f: {command}"
+info_join_message: "&e&l玩家加入訊息&f: {command}"
+info_quit_message: "&e&l玩家退出訊息&f: {command}"
+info_title_message: "&e&l玩家加入標題&f: {command}"
+info_subtitle_message: "&e&l玩家加入副標題&f: {command}"
+
+#設置訊息: /set
+#權限節點: Playerjoinleave.set
+#佔位符: {message} -> 要設置的訊息
+#指令: /joinleave set firsttimejoinmessage
+set_first_time_join_message: "&e&l成功將玩家首次加入訊息設為&f: {message}"
+#指令: /joinleave set joinmessage
+set_join_message: "&e&l成功將玩家加入訊息設為&f: {message}"
+#指令: /joinleave set leavemessage
+set_quit_message: "&e&l成功將玩家退出訊息設為&f: {message}"
+#指令: /joinleave set title
+set_title: "&e&l成功將玩家登入標題設為&f: {message}"
+#指令: /joinleave set subtitle
+set_subtitle: "&e&l成功將玩家登入副標題設為&f: {message}"

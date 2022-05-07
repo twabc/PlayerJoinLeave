@@ -10,39 +10,39 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 
-public class setting {
+public class about {
 
     private PlayerJoinLeave plugin;
-    private FileConfiguration settingfile = null;
+    private FileConfiguration aboutfile = null;
     private File configFile = null;
 
 
-    public setting(PlayerJoinLeave plugin) {
+    public about(PlayerJoinLeave plugin) {
         this.plugin = plugin;
         saveDefaultConfig();
     }
 
     public void reloadConfig() {
         if (this.configFile == null)
-            this.configFile = new File(this.plugin.getDataFolder(), "setting.yml");
+            this.configFile = new File(this.plugin.getDataFolder(), "about.yml");
 
-        this.settingfile = YamlConfiguration.loadConfiguration(this.configFile);
+        this.aboutfile = YamlConfiguration.loadConfiguration(this.configFile);
 
-        InputStream a = this.plugin.getResource("setting.yml");
-        if(a != null) {
+        InputStream a = this.plugin.getResource("about.yml");
+        if (a != null) {
             YamlConfiguration b = YamlConfiguration.loadConfiguration(new InputStreamReader(a));
-            this.settingfile.setDefaults(b);
+            this.aboutfile.setDefaults(b);
         }
     }
 
     public FileConfiguration getConfig() {
-        if(this.settingfile == null)
+        if (this.aboutfile == null)
             reloadConfig();
-        return this.settingfile;
+        return this.aboutfile;
     }
 
     public void saveConfig() {
-        if(this.settingfile == null || this.configFile == null)
+        if (this.aboutfile == null || this.configFile == null)
             return;
 
         try {
@@ -53,11 +53,11 @@ public class setting {
     }
 
     public void saveDefaultConfig() {
-        if(this.configFile == null)
-            this.configFile = new File(this.plugin.getDataFolder(), "setting.yml");
+        if (this.configFile == null)
+            this.configFile = new File(this.plugin.getDataFolder(), "about.yml");
 
-        if(!this.configFile.exists()) {
-            this.plugin.saveResource("setting.yml", false);
+        if (!this.configFile.exists()) {
+            this.plugin.saveResource("about.yml", false);
         }
     }
 }
