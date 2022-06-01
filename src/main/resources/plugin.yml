@@ -6,3 +6,6 @@ authors: [ tw_abc ]
 softdepend: [ PlaceholderAPI ]
 commands:
   joinleave:
+  m:
+  msg:
+  tell:

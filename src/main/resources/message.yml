@@ -1,5 +1,20 @@
-first_time_join_message: "&f[&e首次加入&f] &6{player} &b歡迎&3~"
-join_message: "&f[&b+&f] &3{player} &a降落到了伺服器 &f(｡･∀･)ﾉﾞ"
-quit_message: "&f[&c-&f] &3{player} &a離開了伺服器"
-Title_message: "&e&k=== &d&l歡&b&l迎&6&l光&9&l臨 &e&k==="
-Sub_Title_message: "&e&l來到伺服器遊玩"
+Prefix: "&#F2A2E8系統 &#F9B7FF» "
+
+#PlayerJoinLeave
+first-time-join-message: "&#C38EC7[首次加入] {player} 第一次加入伺服器 歡迎~"
+join-message: "&#E77471[+] {player} 加入伺服器"
+quit-message: "&#FED8B1[-] {player} 離開伺服器"
+Title-message: "&e&k=== &d&l歡&b&l迎&6&l光&9&l臨 &e&k==="
+Sub-Title-message: "&#893BFF來到伺服器遊玩"
+
+#PlayerChatPrefix
+Player-send-message: "&#E0B0FF%player_name% &#D891EF» "
+
+#PlayerMsg
+Msg-Command-tutorial: "&#B6B6B4/指令 <在線玩家名> <訊息>"
+Player-not-online: "&#AFDCEC玩家 %player_name% 不在線上"
+sender-message: "&#D5D6EA[密語] &#C9DFEC{sender} » {receiver}&#F0FFFF: "
+receiver-message: "&#D5D6EA[密語] &#C9DFEC{sender} » {receiver}&#F0FFFF: "
+
+#UnknownCommand
+unknown-command: "查無此指令 使用/menu開啟選單了解各種功能"

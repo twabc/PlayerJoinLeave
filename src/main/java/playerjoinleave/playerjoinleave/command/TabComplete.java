@@ -16,7 +16,6 @@ public class TabComplete implements TabCompleter {
               arguments.add("list");
               arguments.add("help");
               arguments.add("reload");
-              arguments.add("set");
               return arguments;
         } else if (args[0].equals("set")) {
             List<String> arguments2 = new ArrayList<String>();

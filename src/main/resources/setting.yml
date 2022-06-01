@@ -1,26 +1,28 @@
-#登入訊息 true -> 開啟  false -> 關閉
-join_message_enabled: true
+#指令無權限
+command-no-permission: "&#DDA0DD你沒有權限使用此指令"
 
-#將滑鼠移動到訊息上顯示的文字
-#可只用佔位符: {player_name} -> 玩家名稱 {player_world} 玩家所在世界
-# {loc_x} {loc_y} {loc_z} -> 玩家X, Y, Z座標
-# {player_uuid} -> 玩家UUID
-message_show_text:
-   - "&e&l玩家名稱&f:&b {player_name}"
-   - "&e&l所在世界&f:&b {player_world}"
-   - ""
-   - "&6&l點擊即可打好發送密語指令"
-#點擊登出登入後預備輸入的訊息
-message_suggest_command: "/msg {player}"
+#登入訊息 true -> 開啟  false -> 關閉
+join-message-enabled: true
+
+#登入時發送給玩家的訊息
+message-login-enabled: true
+message-login:
+   - "&f=========================="
+   - "  &e&k------&d&l歡迎來到伺服器&e&k------  "
+   - "&#BA55D3Website: https://github.com/twabc?tab=repositories"
+   - "&#C45AEC/menu 開啟伺服器選單"
+   - "&#D462FF/rtp 隨機傳送開始生存~"
+   - "&f=========================="
 
 
 #在玩家登入時輸入指令|文字
-player_join_send_message_enabled: true
-player_join_send_message: ""
+join-commands-enabled: true
+join-commands:
+   - "/fly off"
 
 
 #title功能 true -> 開啟  false-> 關閉
-Title_enabled: true
+Title-enabled: true
 #淡入時間 | 停留時間 | 淡出時間
 fadeln: 10
 stay: 30
@@ -28,55 +30,36 @@ fadeOut: 10
 
 
 #音效 true -> 開啟  false -> 關閉
-Sound_enabled: true
-#音效類型 切記輸入大寫
-#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html 可在此網站中搜尋音效
-Sound_type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
-
-
-#指令無權限
-command_no_permission: "[&b系統&f] &a你沒有權限使用此指令"
-
+Sound-enabled: true
+#音效類型
+#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+Sound-type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
 
 #重製資料夾指令: /joinleave reload
 #權限節點: Playerjoinleave.reload
-reload_setting_file: "[&b系統&f] &6&l成功重製&esetting&6&l資料夾"
-reload_message_file: "[&b系統&f] &6&l成功重製&emessage&6&l資料夾"
-no_specify_file:
-   - "[&b系統&f] &6&l請指定要重製的資料夾"
-   - "&f&l/&e&ljoinleave reload &3setting&f&l|&3message"
+reload-setting-file: "&#DDA0DD成功重製&#C38EC7setting&#DDA0DD資料夾"
+reload-message-file: "&#DDA0DD成功重製&#C38EC7message&#DDA0DD資料夾"
+no-specify-file:
+   - "&#C38EC7請指定要重製的資料夾"
+   - "&#C38EC7/joinleave reload setting|message"
 
 #指令教學: /joinleave help
 #權限節點: Playerjoinleave.help
-help_command_message:
-   - "&e&l-------------"
-   - "&f&l/&6&ljoinleave info&f: &b&l插件資訊"
-   - "&f&l/&6&ljoinleave list&f: &b&l登出登入訊息查詢"
-   - "&f&l/&6&ljoinleave set &ejoinmessage&f&l|&eleavemessage"
-   - "&efirsttimejoinmessage&f&l|&etitle&f&l|&esubtitle&f&6&l訊息: &b&l設定登出登入訊息"
-   - "&f&l/&6&ljoinleave reload &3&lmessage&f&l|&3setting&f &b&l重製指定資料夾:"
-   - "&e&l-------------"
+help-command-message:
+   - "&#9E7BFF-------------"
+   - "&#CCCCFF/joinleave info: &#DCD0FF插件資訊"
+   - "&#CCCCFF/joinleave list: &#DCD0FF登出登入訊息查詢"
+   - "&#CCCCFF/joinleave set joinmessage|leavemessage"
+   - "&#CCCCFFfirsttimejoinmessage|title|subtitle: &#DCD0FF設定登出登入訊息"
+   - "&#CCCCFF/joinleave reload message|setting: &#DCD0FF重製指定資料夾"
+   - "&#9E7BFF-------------"
 
 
 #訊息查詢: /joinleave list
 #權限節點: Playerjoinleave.list
 #佔位符: {command} -> 登出|登入訊息
-info_first_time_join_message: "&e&l玩家首次加入訊息&f: {command}"
-info_join_message: "&e&l玩家加入訊息&f: {command}"
-info_quit_message: "&e&l玩家退出訊息&f: {command}"
-info_title_message: "&e&l玩家加入標題&f: {command}"
-info_subtitle_message: "&e&l玩家加入副標題&f: {command}"
-
-#設置訊息: /set
-#權限節點: Playerjoinleave.set
-#佔位符: {message} -> 要設置的訊息
-#指令: /joinleave set firsttimejoinmessage
-set_first_time_join_message: "&e&l成功將玩家首次加入訊息設為&f: {message}"
-#指令: /joinleave set joinmessage
-set_join_message: "&e&l成功將玩家加入訊息設為&f: {message}"
-#指令: /joinleave set leavemessage
-set_quit_message: "&e&l成功將玩家退出訊息設為&f: {message}"
-#指令: /joinleave set title
-set_title: "&e&l成功將玩家登入標題設為&f: {message}"
-#指令: /joinleave set subtitle
-set_subtitle: "&e&l成功將玩家登入副標題設為&f: {message}"
+info-first-time-join-message: "&#FEA3AA玩家首次加入訊息: {command}"
+info-join-message: "&#FEA3AA玩家加入訊息: {command}"
+info-quit-message: "&#FEA3AA玩家退出訊息: {command}"
+info-title-message: "&#FEA3AA玩家加入標題: {command}"
+info-subtitle-message: "&#FEA3AA玩家加入副標題: {command}"
