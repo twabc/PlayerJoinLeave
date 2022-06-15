@@ -1,24 +1,12 @@
-#指令無權限
-command-no-permission: "&#DDA0DD你沒有權限使用此指令"
-
 #登入訊息 true -> 開啟  false -> 關閉
 join-message-enabled: true
 
 #登入時發送給玩家的訊息
 message-login-enabled: true
-message-login:
-   - "&f=========================="
-   - "  &e&k------&d&l歡迎來到伺服器&e&k------  "
-   - "&#BA55D3Website: https://github.com/twabc?tab=repositories"
-   - "&#C45AEC/menu 開啟伺服器選單"
-   - "&#D462FF/rtp 隨機傳送開始生存~"
-   - "&f=========================="
 
 
 #在玩家登入時輸入指令|文字
 join-commands-enabled: true
-join-commands:
-   - "/fly off"
 
 
 #title功能 true -> 開啟  false-> 關閉
@@ -28,38 +16,16 @@ fadeln: 10
 stay: 30
 fadeOut: 10
 
+#Announcer 單位: 秒(sec)
+Announce-interval: 1
+
 
 #音效 true -> 開啟  false -> 關閉
-Sound-enabled: true
+Join-Sound-enabled: true
+Msg-Sound-enabled: true
+Announce-Sound-enabled: true
 #音效類型
 #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-Sound-type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
-
-#重製資料夾指令: /joinleave reload
-#權限節點: Playerjoinleave.reload
-reload-setting-file: "&#DDA0DD成功重製&#C38EC7setting&#DDA0DD資料夾"
-reload-message-file: "&#DDA0DD成功重製&#C38EC7message&#DDA0DD資料夾"
-no-specify-file:
-   - "&#C38EC7請指定要重製的資料夾"
-   - "&#C38EC7/joinleave reload setting|message"
-
-#指令教學: /joinleave help
-#權限節點: Playerjoinleave.help
-help-command-message:
-   - "&#9E7BFF-------------"
-   - "&#CCCCFF/joinleave info: &#DCD0FF插件資訊"
-   - "&#CCCCFF/joinleave list: &#DCD0FF登出登入訊息查詢"
-   - "&#CCCCFF/joinleave set joinmessage|leavemessage"
-   - "&#CCCCFFfirsttimejoinmessage|title|subtitle: &#DCD0FF設定登出登入訊息"
-   - "&#CCCCFF/joinleave reload message|setting: &#DCD0FF重製指定資料夾"
-   - "&#9E7BFF-------------"
-
-
-#訊息查詢: /joinleave list
-#權限節點: Playerjoinleave.list
-#佔位符: {command} -> 登出|登入訊息
-info-first-time-join-message: "&#FEA3AA玩家首次加入訊息: {command}"
-info-join-message: "&#FEA3AA玩家加入訊息: {command}"
-info-quit-message: "&#FEA3AA玩家退出訊息: {command}"
-info-title-message: "&#FEA3AA玩家加入標題: {command}"
-info-subtitle-message: "&#FEA3AA玩家加入副標題: {command}"
+Msg-Sound-Type: "ENTITY_ENDERMAN_TELEPORT"
+Join-Sound-Type: "ENTITY_EXPERIENCE_BOTTLE_THROW"
+Announce-Sound-type: "BLOCK_AZALEA_HIT"

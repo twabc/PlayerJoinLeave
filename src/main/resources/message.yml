@@ -1,20 +1,78 @@
 Prefix: "&#F2A2E8系統 &#F9B7FF» "
 
-#PlayerJoinLeave
+command-no-permission: "&#DDA0DD你沒有權限使用此指令"
+
+unknown-command: "查無此指令 使用/menu開啟選單了解各種功能"
+
+#PlayerMessage
 first-time-join-message: "&#C38EC7[首次加入] {player} 第一次加入伺服器 歡迎~"
 join-message: "&#E77471[+] {player} 加入伺服器"
 quit-message: "&#FED8B1[-] {player} 離開伺服器"
 Title-message: "&e&k=== &d&l歡&b&l迎&6&l光&9&l臨 &e&k==="
 Sub-Title-message: "&#893BFF來到伺服器遊玩"
+message-login:
+  - "&f=========================="
+  - "  &e&k------&d&l歡迎來到伺服器&e&k------  "
+  - "&#BA55D3Website: https://github.com/twabc?tab=repositories"
+  - "&#C45AEC/menu 開啟伺服器選單"
+  - "&#D462FF/rtp 隨機傳送開始生存~"
+  - "&f=========================="
+join-commands:
+  - "/fly off"
 
 #PlayerChatPrefix
-Player-send-message: "&#E0B0FF%player_name% &#D891EF» "
+#Permission: PlayerMessage.ChatColor
+#{Tag} -> player tag
+Player-send-message: "{Tag} %luckperms_prefix%&#40E0D0%player_name% &#48D1CC»&r "
 
-#PlayerMsg
+#Command: /m
+#Permission: PlayerMessage.msg
 Msg-Command-tutorial: "&#B6B6B4/指令 <在線玩家名> <訊息>"
 Player-not-online: "&#AFDCEC玩家 %player_name% 不在線上"
-sender-message: "&#D5D6EA[密語] &#C9DFEC{sender} » {receiver}&#F0FFFF: "
-receiver-message: "&#D5D6EA[密語] &#C9DFEC{sender} » {receiver}&#F0FFFF: "
+sender-message: "&#D5D6EA[密語] &#C9DFEC我 » {receiver} :&#F0FFFF "
+receiver-message: "&#D5D6EA[密語] &#C9DFEC{sender} » 我 :&#F0FFFF "
+spy-message: "&#F9B7FF[Spy] &#F2A2E8{sender} » {receiver} :&#F0FFFF "
 
-#UnknownCommand
-unknown-command: "查無此指令 使用/menu開啟選單了解各種功能"
+#Command: /playermessage reload
+#Permission: PlayerMessage.reload
+reload-setting-file: "&#DDA0DD成功重製&#C38EC7setting&#DDA0DD資料夾"
+reload-message-file: "&#DDA0DD成功重製&#C38EC7message&#DDA0DD資料夾"
+reload-tag-file: "&#DDA0DD成功重製&#C38EC7tag&#DDA0DD資料夾"
+reload-all-file: "&#DDA0DD成功重製&#C38EC7所有&#DDA0DD資料夾"
+no-specify-file:
+  - "&#C38EC7請指定要重製的資料夾"
+  - "&#C38EC7/joinleave reload setting|message"
+
+#Command: /playermessage help
+#Permission: PlayerMessage.help
+help-command-message:
+  - "&#9E7BFF-------------"
+  - "&#CCCCFF/playermessage info: &#DCD0FF插件資訊"
+  - "&#CCCCFF/playermessage list: &#DCD0FF登出登入訊息查詢"
+  - "&#CCCCFF/playermessage reload message|setting: &#DCD0FF重製指定資料夾"
+  - "&#CCCCFF/playermessage announcer stop|start: &#DCD0FF開始或暫停伺服器廣播"
+  - "&#9E7BFF-------------"
+
+#Command: /playermessage list
+#Permission: PlayerMessage.list
+#{command} -> Join/Leave message
+list-first-time-join-message: "&#FEA3AA玩家首次加入訊息: {command}"
+list-join-message: "&#FEA3AA玩家加入訊息: {command}"
+list-quit-message: "&#FEA3AA玩家退出訊息: {command}"
+list-title-message: "&#FEA3AA玩家加入標題: {command}"
+list-subtitle-message: "&#FEA3AA玩家加入副標題: {command}"
+
+#Command: /playermessage announcer stop|start
+Announce-command-stop: "&#F9B7FF伺服器廣播已暫停"
+Announce-command-start: "&#F9B7FF伺服器廣播已開始"
+Announcements-list:
+  - 1
+  - 2
+  - 3
+Announcements-message:
+  1:
+    - '&aWelcome to the server'
+  2:
+    - '&cHave a good day'
+  3:
+    - '&#DA70D6Join our discord server to learn more information'

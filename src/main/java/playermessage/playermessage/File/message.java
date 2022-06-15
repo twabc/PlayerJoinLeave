@@ -1,8 +1,8 @@
-package playerjoinleave.playerjoinleave.File;
+package playermessage.playermessage.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import playerjoinleave.playerjoinleave.PlayerJoinLeave;
+import playermessage.playermessage.PlayerMessage;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,12 +12,12 @@ import java.util.logging.Level;
 
 public class message {
 
-    private PlayerJoinLeave plugin;
+    private PlayerMessage plugin;
     private FileConfiguration messagefile = null;
     private File configFile = null;
 
 
-    public message(PlayerJoinLeave plugin) {
+    public message(PlayerMessage plugin) {
         this.plugin = plugin;
         saveDefaultConfig();
     }

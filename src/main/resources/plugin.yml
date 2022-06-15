@@ -1,11 +1,11 @@
-name: PlayerJoinLeave
+name: PlayerMessage
 version: '${project.version}'
-main: playerjoinleave.playerjoinleave.PlayerJoinLeave
+main: playermessage.playermessage.PlayerMessage
 api-version: 1.18
 authors: [ tw_abc ]
 softdepend: [ PlaceholderAPI ]
 commands:
-  joinleave:
+  playermessage:
   m:
   msg:
   tell:
