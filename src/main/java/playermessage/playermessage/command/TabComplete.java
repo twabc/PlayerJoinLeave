@@ -3,11 +3,18 @@ package playermessage.playermessage.command;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import playermessage.playermessage.PlayerMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TabComplete implements TabCompleter {
+
+    public PlayerMessage plugin;
+    public TabComplete() {
+        this.plugin = plugin;
+    }
+
 
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
@@ -39,12 +46,6 @@ public class TabComplete implements TabCompleter {
               arguments4.add("stop");
               arguments4.add("start");
               return arguments4;
-        } else if (args[0].equals("tag")) {
-            List<String> arguments5 = new ArrayList<String>();
-              arguments5.add("set");
-              if (args.length == 2) {
-                  return arguments5;
-              }
         }
         return null;
     }

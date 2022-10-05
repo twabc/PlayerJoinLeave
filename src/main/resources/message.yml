@@ -22,8 +22,7 @@ join-commands:
 
 #PlayerChatPrefix
 #Permission: PlayerMessage.ChatColor
-#{Tag} -> player tag
-Player-send-message: "{Tag} %luckperms_prefix%&#40E0D0%player_name% &#48D1CC»&r "
+Player-send-message: "%luckperms_prefix%&#40E0D0%player_name% &#48D1CC»&r "
 
 #Command: /m
 #Permission: PlayerMessage.msg
@@ -50,7 +49,6 @@ help-command-message:
   - "&#CCCCFF/playermessage info: &#DCD0FF插件資訊"
   - "&#CCCCFF/playermessage list: &#DCD0FF登出登入訊息查詢"
   - "&#CCCCFF/playermessage reload message|setting: &#DCD0FF重製指定資料夾"
-  - "&#CCCCFF/playermessage announcer stop|start: &#DCD0FF開始或暫停伺服器廣播"
   - "&#9E7BFF-------------"
 
 #Command: /playermessage list
@@ -61,18 +59,3 @@ list-join-message: "&#FEA3AA玩家加入訊息: {command}"
 list-quit-message: "&#FEA3AA玩家退出訊息: {command}"
 list-title-message: "&#FEA3AA玩家加入標題: {command}"
 list-subtitle-message: "&#FEA3AA玩家加入副標題: {command}"
-
-#Command: /playermessage announcer stop|start
-Announce-command-stop: "&#F9B7FF伺服器廣播已暫停"
-Announce-command-start: "&#F9B7FF伺服器廣播已開始"
-Announcements-list:
-  - 1
-  - 2
-  - 3
-Announcements-message:
-  1:
-    - '&aWelcome to the server'
-  2:
-    - '&cHave a good day'
-  3:
-    - '&#DA70D6Join our discord server to learn more information'

@@ -1,11 +1,12 @@
 name: PlayerMessage
 version: '${project.version}'
 main: playermessage.playermessage.PlayerMessage
-api-version: 1.18
+api-version: 1.19
 authors: [ tw_abc ]
-softdepend: [ PlaceholderAPI ]
+softdepend: [PlaceholderAPI]
 commands:
   playermessage:
   m:
   msg:
   tell:
+  tagchange:

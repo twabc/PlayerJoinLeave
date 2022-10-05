@@ -1,5 +1,6 @@
 package playermessage.playermessage.Utils;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -80,38 +81,5 @@ public class util<taskID> {
 
     public static void Background_unavailable() {
         Bukkit.getServer().getLogger().info("後台無法使用此指令");
-    }
-
-    public static int task;
-    public static void startCountdown(){
-        FileConfiguration message = plugin.plugin.message.getConfig();
-        FileConfiguration setting = plugin.plugin.setting.getConfig();
-        int interval = (setting.getInt("Announce-interval") * 20);
-        int list_size = message.getStringList("Announcements-list").size();
-        boolean sound_enable = setting.getBoolean("Announce-Sound-enabled");
-        task = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin.plugin, new Runnable() {
-            int number = 0;
-            public void run() {
-               String Announcement_list = message.getStringList("Announcements-list").get(number);
-               for (String Announcements_message :  message.getStringList("Announcements-message." + Announcement_list)) {
-                   for (Player player : Bukkit.getOnlinePlayers()) {
-                       player.sendMessage(util.formatText(Announcements_message));
-                       if (sound_enable) {
-                           player.playSound(player.getLocation(), Sound.valueOf(setting.getString("Announce-Sound-type")), 1F , 1F);
-                       }
-                   }
-               }
-               if (number < message.getStringList("Announcements-list").size()) {
-                   number = number + 1;
-               }
-               if (number == list_size) {
-                   number = 0;
-               }
-            }
-        },interval,interval);
-    }
-
-    public static void stopCountdown(){
-        Bukkit.getServer().getScheduler().cancelTask(task);
     }
 }

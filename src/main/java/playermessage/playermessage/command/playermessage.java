@@ -1,7 +1,6 @@
 package playermessage.playermessage.command;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,7 +10,6 @@ import org.bukkit.entity.Player;
 import playermessage.playermessage.PlayerMessage;
 import playermessage.playermessage.Utils.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class playermessage implements CommandExecutor {
@@ -33,7 +31,6 @@ public class playermessage implements CommandExecutor {
         Player player = (Player) sender;
         FileConfiguration setting = plugin.plugin.setting.getConfig();
         FileConfiguration message = plugin.plugin.message.getConfig();
-        FileConfiguration tag = plugin.plugin.tag.getConfig();
         List<String> help_list = message.getStringList("help-command-message");
         List<String> help_list_reload = setting.getStringList("no-specify-setting");
         String prefix = PlaceholderAPI.setPlaceholders(player, util.formatText(message.getString("Prefix")));
@@ -71,14 +68,9 @@ public class playermessage implements CommandExecutor {
                         plugin.plugin.message.reloadConfig();
                         player.sendMessage(prefix + util.formatText(message.getString("reload-message-file")));
                     }
-                    if (args[1].equals("tag")) {
-                        plugin.plugin.tag.reloadConfig();
-                        player.sendMessage(prefix + util.formatText(message.getString("reload-tag-file")));
-                    }
                     if (args[1].equals("all")) {
                         plugin.plugin.message.reloadConfig();
                         plugin.plugin.setting.reloadConfig();
-                        plugin.plugin.tag.reloadConfig();
                         player.sendMessage(prefix + util.formatText(message.getString("reload-all-file")));
                     }
                 } else {
@@ -118,63 +110,6 @@ public class playermessage implements CommandExecutor {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&e&lGithub&f: &3https://github.com/twabc"));
             return true;
         }
-        if (args[0].equalsIgnoreCase("announcer")) {
-            if (sender.hasPermission("PlayerMessage.announcer")) {
-                if (args.length == 1) {
-                    for (String help_message : help_list) {
-                        player.sendMessage(prefix + util.formatText(help_message));
-                    }
-                    return true;
-                }
-                if (args[1].equals("stop")) {
-                    player.sendMessage(PlaceholderAPI.setPlaceholders(player, prefix + util.formatText(message.getString("Announce-command-stop"))));
-                    util.stopCountdown();
-                    return true;
-                }
-                if (args[1].equals("start")) {
-                    player.sendMessage(PlaceholderAPI.setPlaceholders(player, prefix + util.formatText(message.getString("Announce-command-start"))));
-                    util.stopCountdown();
-                    util.startCountdown();
-                }
-                return true;
-            } else {
-                player.sendMessage(no_permission);
-            }
-        }
-        if (args[0].equalsIgnoreCase("tag")) {
-            if (sender.hasPermission("PlayerMessage.announcer")) {
-                if (args.length == 1) {
-                    for (String help_message : help_list) {
-                        player.sendMessage(prefix + util.formatText(help_message));
-                    }
-                    return true;
-                }
-                if (args[1].equals("set")) {
-                    if (args.length == 2) {
-                        for (String help_message : help_list) {
-                            player.sendMessage(prefix + util.formatText(help_message));
-                        }
-                        return true;
-                    }
-                        if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[2]))) {
-                            if (args.length == 3) {
-                                for (String help_message : help_list) {
-                                    player.sendMessage(prefix + util.formatText(help_message));
-                                }
-                                return true;
-                            }
-                            tag.set(Bukkit.getPlayer(args[2]).getName(), args[3]);
-                            player.sendMessage(prefix + util.formatText(message.getString("tag-command-setup").replace("{Player}", Bukkit.getPlayer(args[2]).getName()).replace("{Tag}", args[3])));
-                            plugin.plugin.tag.saveConfig();
-                            return true;
-                        } else {
-                            player.sendMessage(prefix + util.formatText(message.getString("tag-command-player-not-online")));
-                            return true;
-                        }
-                    }
-                }
-                return false;
-            }
-            return false;
-        }
+        return false;
+    }
 }

@@ -1,8 +1,8 @@
 package playermessage.playermessage.command;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.ChatColor;
 import org.bukkit.Sound;
+import org.jetbrains.annotations.NotNull;
 import playermessage.playermessage.PlayerMessage;
 import playermessage.playermessage.Utils.util;
 import org.bukkit.Bukkit;
@@ -21,13 +21,13 @@ public class msg implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        FileConfiguration message = plugin.plugin.message.getConfig();
-        FileConfiguration setting = plugin.plugin.setting.getConfig();
-        String prefix = util.formatText(message.getString("Prefix"));
-        String no_permission = prefix + util.formatText(message.getString("command-no-permission"));
-        String command_tutorial = util.formatText(prefix + message.getString("Msg-Command-tutorial"));
-        boolean sound_enabled = setting.getBoolean("Msg-Sound-enabled");
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        FileConfiguration messageFile = PlayerMessage.message.getConfig();
+        FileConfiguration settingFile = PlayerMessage.setting.getConfig();
+        String prefix = util.formatText(messageFile.getString("Prefix"));
+        String no_permission = prefix + util.formatText(messageFile.getString("command-no-permission"));
+        String command_tutorial = util.formatText(prefix + messageFile.getString("Msg-Command-tutorial"));
+        boolean sound_enabled = settingFile.getBoolean("Msg-Sound-enabled");
 
         if (!(sender instanceof Player)) {
             util.Background_unavailable();
@@ -47,7 +47,7 @@ public class msg implements CommandExecutor {
         Player receiver = Bukkit.getServer().getPlayer(args[0]);
 
         if (receiver == null) {
-            sender.sendMessage(PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), prefix + util.formatText(message.getString("Player-not-online"))));
+            sender.sendMessage(PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), prefix + util.formatText(messageFile.getString("Player-not-online"))));
             sender.sendMessage(command_tutorial);
             return true;
         }
@@ -60,9 +60,9 @@ public class msg implements CommandExecutor {
         String sender_name = sender.getName();
         String receiver_name = receiver.getName();
 
-        String receiverMsg = util.formatText(message.getString("receiver-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
-        String senderMsg = util.formatText(message.getString("sender-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
-        String OpMsg = util.formatText(message.getString("spy-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
+        String receiverMsg = util.formatText(messageFile.getString("receiver-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
+        String senderMsg = util.formatText(messageFile.getString("sender-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
+        String OpMsg = util.formatText(messageFile.getString("spy-message").replace("{sender}",sender_name).replace("{receiver}", receiver_name));
 
         if(label.equalsIgnoreCase("m") || label.equalsIgnoreCase("msg") || label.equalsIgnoreCase("tell")) {
             for (int i = 1; i < args.length; i++) {
@@ -72,7 +72,7 @@ public class msg implements CommandExecutor {
             }
 
             if (sound_enabled) {
-                receiver.playSound(receiver.getLocation(), Sound.valueOf(setting.getString("Msg-Sound-Type")), 1F, 1f);
+                receiver.playSound(receiver.getLocation(), Sound.valueOf(settingFile.getString("Msg-Sound-Type")), 1F, 1f);
             }
 
             sender.sendMessage(senderMsg);
@@ -84,6 +84,7 @@ public class msg implements CommandExecutor {
                    return true;
                }
             }
+
             return true;
         }
         return false;
